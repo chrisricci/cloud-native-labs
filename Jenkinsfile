@@ -50,7 +50,7 @@ pipeline {
                         openshift.selector('dc', 'gateway-canary').rollout().status()
 
                         //set canary imagestream back to production tag
-                        openshift.tag("coolstore/gateway:latest", "/gateway-canary:latest")
+                        openshift.tag("cool-store/gateway:latest", "cool-store/gateway-canary:latest")
                     }
                 }
             }
@@ -67,7 +67,7 @@ pipeline {
             openshift.withCluster() {
                 openshift.withProject('') {
                     //Tag latest from build namespace
-                    openshift.tag("/gateway-canary:latest", "/gateway:latest")
+                    openshift.tag("cool-store/gateway-canary:latest", "cool-store/gateway:latest")
 
                     /***
                      * Rollout
